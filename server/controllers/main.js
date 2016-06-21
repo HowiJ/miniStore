@@ -37,8 +37,10 @@ module.exports = (function() {
                 console.log('CustomersCreate');
                 var customer = new Customer(req.body);
                 customer.save(function(err) {
+                    console.log(save);
                     if (err) {console.log(err)} else {
                         res.json(customer);
+                        console.log(customer)
                     }
                 })
             } else if (category == 'products') {
