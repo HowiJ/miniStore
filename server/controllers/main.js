@@ -31,8 +31,10 @@ module.exports = (function() {
 
 
         create: function(req, res) {
+            console.log('create');
             var category = req.params.category;
             if (category == 'customers') {
+                console.log('CustomersCreate');
                 var customer = new Customer(req.body);
                 customer.save(function(err) {
                     if (err) {console.log(err)} else {
@@ -40,6 +42,7 @@ module.exports = (function() {
                     }
                 })
             } else if (category == 'products') {
+                console.log('CustomersProduct');
                 var product = new Product(req.body);
                 product.save(function(err) {
                     if (err) {console.log(err)} else {
@@ -47,6 +50,7 @@ module.exports = (function() {
                     }
                 })
             } else if (category == 'orders') {
+                console.log('CustomersOrders');
                 var order = new Order(req.body);
                 order.save(function(err) {
                     if (err) {console.log(err)} else {
@@ -56,6 +60,7 @@ module.exports = (function() {
             }
         },
         delete: function(req, res) {
+            console.log('delete');
             var category = req.params.category;
             console.log(category);
             if (category == 'customers') {
