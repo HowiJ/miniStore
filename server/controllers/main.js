@@ -11,6 +11,7 @@ var Order       = mongoose.model('Order');
 module.exports = (function() {
     return {
         index: function(req, res) {
+            console.log('Index');
             var category = req.params.category;
             if (category == 'customers') {var Model = Customer;} else
             if (category == 'products') {var Model = Product;}
