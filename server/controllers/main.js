@@ -38,7 +38,7 @@ module.exports = (function() {
                 var customer = new Customer(req.body);
                 customer.save(function(err) {
                     console.log(err);
-                    Console.log('Save')
+                    console.log('Save')
                     if (err) {console.log(err)} else {
                         res.json(customer);
                         console.log(customer)
