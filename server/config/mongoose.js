@@ -2,7 +2,7 @@ var mongoose    = require('mongoose');
 var path        = require('path');
 var fs          = require('fs');
 
-var server      = 'mongodb://127.0.0.1/';
+var server      = 'mongodb://localhost/';
 var database    = 'ministore';
 mongoose.connect(server+database);
 var models_path = path.join(__dirname, './../models');
