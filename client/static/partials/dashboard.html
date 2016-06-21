@@ -1,0 +1,61 @@
+<div ng-controller="DashboardController" class="container">
+    <div class="row">
+        <div class="columns two">
+            <input type="text" ng-model="filter" name="filter" placeholder="search..." style="width: 100%">
+        </div>
+        <div class="columns ten">
+            <div class="row">
+                <div class="columns twelve content">
+
+                    <div class="row">
+                        <div class="columns two item" ng-repeat="product in products | limitTo: 5 | filter: filter">
+                            <div class="img"><img ng-src="{{product.url}}" alt=""></div>
+                            <span ng-bind="product.name"></span><br>
+                            <span>({{product.available}} left)</span>
+                        </div>
+                        <div class="columns two item">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="ten columns more">
+                            <a href="/#/products">show more...</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="twelve columns">
+                            <b>Recent Orders</b>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="order in orders | orderBy:id:reverse | limitTo: 3 track by $index">
+                        <div class="eleven columns offset-by-one">&#9;{{order.customer.name}} purchased {{order.quantity}} {{order.product.name}}.. (3 hours ago)</div>
+                    </div>
+                    <div class="row">
+                        <div class="ten columns more">
+                            <a href="/#/orders">show all orders</a>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="twelve columns">
+                            <b>New Customers</b>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="customer in customers | orderBy:id:reverse | limitTo: 3 | filter: filter ">
+                        <div class="one columns">
+                            <div class="pimg"></div>
+                        </div>
+                        <div class="eleven columns ncust">{{customer.name}} joined the store. ({{customer.since}} days ago)</div>
+                    </div>
+                    <div class="row">
+                        <div class="ten columns more">
+                            <a href="/#/customers">show all customers</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

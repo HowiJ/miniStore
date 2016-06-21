@@ -1,0 +1,43 @@
+<div ng-controller="CustomersController" class="container">
+    <div class="row">
+        <div class="twelve columns" style="margin-bottom:1em;">
+            <h3>Add a new customer</h3>
+        </div>
+        <div class="row">
+            <form>
+                <div class="one columns"><h5>Name:</h5></div>
+                <div class="three columns">
+                    <input type="text" name="customerName" placeholder="Name" ng-model="customer.name">
+                </div>
+                <div class="three columns">
+                    <input type="submit" ng-click="addCustomer()">
+                </div>
+                <div class="three columns offset-by-two">
+                    <input type="text" ng-model="filterCustomer" placeholder="search...">
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Created Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="customer in customers | filter: filterCustomer track by $index">
+                            <td ng-bind="customer.name"></td>
+                            <td ng-bind="customer.date"></td>
+                            <td>
+                                <button ng-click="removeCustomer(customer)">Remove</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

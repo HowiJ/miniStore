@@ -1,0 +1,63 @@
+<div ng-controller="OrdersController" class="container">
+    <div class="row">
+        <div class="twelve columns"><b>Add a new order</b></div>
+    </div>
+    <form>
+        <div class="row">
+            <div class="two columns">
+                Customer
+            </div>
+            <div class="ten columns">
+                <select name="customer" ng-model="order.customer">
+                    <option ng-repeat="customer in customers | limitTo: 1" selected disabled required>Customer</option>
+                    <option ng-repeat="customer in customers" value="{{customer}}" ng-bind="customer.name"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="two columns">
+                Order
+            </div>
+            <div class="three columns">
+                <input type="number" ng-model="order.qty" placeholder="Quantity">
+            </div>
+            <div class="four columns">
+                <select name="product" ng-model="order.product">
+                    <option ng-repeat="product in products | limitTo: 1" selected disabled required>Product</option>
+                    <option ng-repeat="product in products" value="{{product}}" ng-bind="product.name"></option>
+                </select>
+            </div>
+            <div class="three columns">
+                <input type="submit" value="Place Order" ng-click="placeOrder()">
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="three columns offset-by-nine">
+            <input type="text" placeholder="search..." ng-model="filterOrder">
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns twelve">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="order in orders | filter: filterOrder">
+                        <td ng-bind="order.customer.name"></td>
+                        <td ng-bind="order.product.name"></td>
+                        <td ng-bind="order.quantity"></td>
+                        <td ng-bind="order.dateFormatted"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

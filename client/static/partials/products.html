@@ -1,0 +1,23 @@
+<div class="container" ng-controller="ProductsController">
+    <div class="row">
+        <div class="three columns">
+            <input type="text" ng-model="filterProduct" placeholder="search..." style="margin-bottom: 5em">
+            <b>Add a new product</b>
+            <input type="text" name="product.name" placeholder="Name" ng-model="product.name">
+            <input type="text" name="product.url" ng-model="product.url">
+            <textarea name="product.description" placeholder="Description" ng-model="product.description"></textarea>
+            <select name="product.available" ng-model="product.available">
+                <option ng-repeat="avail in available" selected>{{avail}}</option>
+            </select>
+            <input type="submit" ng-click="addProduct()">
+        </div>
+        <div class="nine columns">
+            <div class="productItem item" ng-repeat="product in products | filter: filterProduct track by $index">
+                <div class="img"><img ng-src="{{product.url}}" alt=""></div>
+                <span ng-bind="product.name"></span><br>
+                <span>({{product.available}} left)</span><br>
+                <span class="reem" ng-click="remove(product)">Remove</span>
+            </div>
+        </div>
+    </div>
+</div>
