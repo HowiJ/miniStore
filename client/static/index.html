@@ -57,7 +57,9 @@
                 }
                 factory.addCustomer = function(customer, callback) {
                     if (customer && customer.name) {
+                        console.log('Things Exist: Factory')
                         $http.post('/customers', customer).success(function(data) {
+                            console.log('Post Success: Factory')
                             // console.log('Data:', data);
                             customer.date = moment(customer.createdDate).format('MMMM Do, YYYY');
                             customers.push(customer);

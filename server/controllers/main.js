@@ -31,13 +31,14 @@ module.exports = (function() {
 
 
         create: function(req, res) {
-            console.log('create');
+            console.log('Create: Server Controller');
             var category = req.params.category;
             if (category == 'customers') {
                 console.log('CustomersCreate');
                 var customer = new Customer(req.body);
                 customer.save(function(err) {
-                    console.log(save);
+                    console.log(err);
+                    Console.log('Save')
                     if (err) {console.log(err)} else {
                         res.json(customer);
                         console.log(customer)
